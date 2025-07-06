@@ -1,44 +1,44 @@
-# 📶 Predicting Problematic Internet Use Severity in Children
+# Predicting Problematic Internet Use Severity in Children
 
 This project was developed as part of a machine learning competition using data from the **Healthy Brain Network (HBN)**. It predicts **SII** (Severity of Internet Impairment), an ordinal variable indicating the level of problematic internet usage among children and adolescents.
 
 ---
 
-## 📌 Problem Statement
+## Problem Statement
 
 Predict the severity of problematic internet use (SII: 0 to 3) using both static and time-series data collected from over 5,000 participants aged 5–22. The goal is to aid early intervention and promote healthier digital habits.
 
 ---
 
-## 📂 Data Overview
+## Data Overview
 
-### 📁 Datasets
+### Datasets
 - **Static Data**: Demographics, clinical scores, and fitness metrics (`train.csv`, `test.csv`)
 - **Time-Series Data**: Sensor-based temporal activity data (`series_train.parquet`, `series_test.parquet`)
 - **Target Variable**: `sii` – Ordinal scale [0, 1, 2, 3]
 
 ---
 
-## 🧹 Data Preprocessing
+## Data Preprocessing
 
-### 🔸 Static Data
+### Static Data
 - Removed IDs and irrelevant columns
 - Median imputation for missing continuous values
 - Label encoding for categorical variables
 
-### 🔸 Time-Series Data
+### Time-Series Data
 - Extracted statistical features (mean, std, trend) using **Polars**
 - Merged time-series features with static data based on ID
 - Final dataset combined both data types with aligned features
 
-### 📊 Visualizations
+### Visualizations
 - Age distribution
 - SII class distribution
 - Correlation heatmaps
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
 An ensemble of the following regressors was used:
 - **LightGBM**
@@ -47,13 +47,13 @@ An ensemble of the following regressors was used:
 - **Random Forest**
 - **Gradient Boosting Regressor**
 
-### 🤖 Ensemble Strategy
+### Ensemble Strategy
 - Combined using **Voting Regressor**
 - Equal weights assigned to all models
 
 ---
 
-## 🏋️‍♀️ Training and Optimization
+## Training and Optimization
 
 - Used **Stratified 5-Fold Cross-Validation** to maintain label balance
 - Evaluated performance using **Quadratic Weighted Kappa (QWK)**
@@ -61,7 +61,7 @@ An ensemble of the following regressors was used:
 
 ---
 
-## 📈 Results & Insights
+## Results & Insights
 
 - **Final QWK score**: **0.450**  
 - Hybrid feature set (static + time-series) significantly improved model accuracy  
@@ -70,7 +70,7 @@ An ensemble of the following regressors was used:
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - Python (Pandas, NumPy, Polars)
 - Scikit-learn
